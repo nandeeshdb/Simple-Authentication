@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { signInStart,signInSuccess,signInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import OAuth from '../components/OAuth';
 
 function SignIn() {
 
@@ -51,15 +52,16 @@ function SignIn() {
 
   return (
     <div className='p-20 max-w-lg mx-auto'>
-        <h1 className='font-bold text-center my-7 text-xl'>Sign Up</h1>
+        <h1 className='font-bold text-center my-7 text-xl'>Sign In</h1>
         <form onSubmit={onSubmitHandler} className='flex flex-col gap-3 '>
           <input onChange={onChangeHandler} className='bg-slate-100 rounded-lg p-2 ' type="email" placeholder='Enter Email' id='email'/>
           <input onChange={onChangeHandler} className='bg-slate-100 rounded-lg p-2 ' type="password" placeholder='Enter Email' id='password'/>
-          <button disabled={loading} className='bg-red-800 text-white rounded-lg my-4 p-2 uppercase hover:opacity-90 disabled:opacity-70'>
+          <button disabled={loading} className='bg-red-800 text-white rounded-lg my-1 p-2 uppercase hover:opacity-90 disabled:opacity-70'>
             {
               loading?"loading":"sign in"
             }
           </button>
+          <OAuth/>
         </form>
         <p className='my-3'>
           Dont have an account? 
