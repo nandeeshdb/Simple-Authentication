@@ -60,7 +60,7 @@ function Profile() {
           hidden
           accept='image/*'
         />
-        <img src={currentUser.profilePicture} onClick={()=>fileRef.current.click()}  alt='no' className='w-28 h-28 rounded-full self-center cursor-pointer '/>
+        <img src={formData.profilePicture||currentUser.profilePicture} onClick={()=>fileRef.current.click()}  alt='no' className='w-28 h-28 rounded-full self-center cursor-pointer '/>
         <p className='text-sm self-center'>
           {imageError ? (
             <span className='text-red-700'>
