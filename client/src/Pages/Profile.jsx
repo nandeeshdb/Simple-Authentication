@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import {
   getDownloadURL,
   getStorage,
+  list,
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
@@ -28,6 +29,8 @@ export default function Profile() {
   const [imageError, setImageError] = useState(false);
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showListingError,setShowListingError] = useState(false)
+  const[userListing,setUserListing] = useState([])
 
   const { currentUser, loading, error } = useSelector((state) => state.user);
   useEffect(() => {
@@ -114,6 +117,29 @@ export default function Profile() {
     }
   }
 
+  const handleShowListing=async(e)=>{
+    
+
+    try {
+      setShowListingError(false)
+
+      const res = await fetch(`api/user/listing/${currentUser._id}`)
+      const data = await res.json();
+      if(data.success === false){
+
+        setShowListingError(true)
+      }
+
+      setUserListing(data)
+      
+    } catch (error) {
+      setShowListingError(true)
+      
+    }
+
+   
+  }
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -190,6 +216,48 @@ export default function Profile() {
       <p className='text-green-700 mt-5'>
         {updateSuccess && 'User is updated successfully!'}
       </p>
+      <button className='w-full text-green-700' onClick={handleShowListing}>Show Your Listings</button>
+      <p className='w-full text-red-700'>{
+        showListingError && 'Error while showing your listing' 
+      }</p>
+
+      
+        <div className='flex flex-col '>
+    <h1 className='text-2xl font-semibold text-center my-8'>
+      Your Listing
+    </h1>
+    {
+        userListing && userListing.length > 0 &&
+         userListing.map((listing)=>(
+          <div key={listing._id} className='border gap-6 p-3 flex justify-between items-center' > 
+          <Link to={`listing/${listing._id}`}>
+            <img src={listing.imageUrls[0]} alt="no" 
+            className='h-20 w-25 object-contain '/>
+          </Link>
+
+          <Link className='flex-1' to={`listing/${listing._id}`}>
+          <p className=' font-semibold hover:underline truncate'>{listing.name}</p>
+          </Link>
+
+            <div className='flex flex-col gap-3'>
+              <button className='text-red-700'>Delete</button>
+              <button className='text-green-700'>Edit</button>
+            </div>
+          
+          </div>
+
+         ))
+        }
+
+        
+  </div>
+
+      
+
+  
+
     </div>
+
+    
   );
 }
