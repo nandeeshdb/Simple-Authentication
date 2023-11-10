@@ -77,3 +77,28 @@ export const deleteUser = async (req, res, next) => {
       return next(errorHandler(401, 'You can only view your own listings!'));
     }
   };
+
+
+  //delete user Listing
+
+  export const deleteUserListing =async(req,res,next)=>{
+    const listing  = await  Listing.findById(req.params.id);
+    if(!listing){
+      return next(errorHandling(404,'Listing not Found'))
+    }
+
+    if(req.user.id !== listing.userRef){
+      return next(errorHandling(401,'You can only delet your listing'))
+    }
+
+    try {
+      await Listing.findByIdAndDelete(req.params.id)
+      res.status(200).json('listing as been deleted')
+      
+    } catch (error) {
+      next(error)
+      
+    }
+  }
+
+
