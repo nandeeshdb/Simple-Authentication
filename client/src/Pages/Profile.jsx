@@ -270,12 +270,18 @@ export default function Profile() {
                 </Link>
             </div>
           
-          </div>
-          
+          </div> 
 
          ))
         
         }
+
+        {
+            userListing.length === 0 &&(
+              <p className='text-center text-blue-700 text-xm'>You have Posted Nothing</p>
+            )
+          }
+          
 
         
   
