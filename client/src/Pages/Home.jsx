@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
-
 import ListingCard from '../components/ListingCard';
+
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
@@ -56,7 +56,7 @@ export default function Home() {
           place with ease
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
-          Sahand Estate is the best place to find your next perfect place to
+          Buy & Sell is the best place to find your next perfect place to
           live.
           <br />
           We have a wide range of properties for you to choose from.
@@ -70,7 +70,7 @@ export default function Home() {
       </div>
 
       {/* swiper */}
-      <Swiper navigation>
+      {/* <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
@@ -85,11 +85,11 @@ export default function Home() {
               ></div>
             </SwiperSlide>
           ))}
-      </Swiper>
+      </Swiper> */}
 
       {/* listing results for offer, sale and rent */}
 
-      <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10'>
+      <div className='max-w-6xl mx-auto p-3 flex flex-col gap-8 '>
         {offerListings && offerListings.length > 0 && (
           <div className=''>
             <div className='my-3'>

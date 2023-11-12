@@ -26,7 +26,6 @@ export default function OAuth() {
         }),
       });
       const data = await res.json();
-      console.log(data)
       dispatch(signInSuccess(data));
       navigate('/');
     } catch (error) {
@@ -37,7 +36,7 @@ export default function OAuth() {
     <button
       onClick={handleGoogleClick}
       type='button'
-      className='bg-blue-800 text-white p-3 rounded-lg uppercase hover:opacity-95'
+      className='bg-blue-900 text-white p-3 rounded-lg uppercase hover:opacity-95'
     >
       Continue with google
     </button>

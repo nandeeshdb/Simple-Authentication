@@ -55,7 +55,7 @@ function SignIn() {
         <h1 className='font-bold text-center my-7 text-xl'>Sign In</h1>
         <form onSubmit={onSubmitHandler} className='flex flex-col gap-3 '>
           <input onChange={onChangeHandler} className='bg-slate-100 rounded-lg p-2 ' type="email" placeholder='Enter Email' id='email'/>
-          <input onChange={onChangeHandler} className='bg-slate-100 rounded-lg p-2 ' type="password" placeholder='Enter Email' id='password'/>
+          <input onChange={onChangeHandler} className='bg-slate-100 rounded-lg p-2 ' type="password" placeholder='Enter Password' id='password'/>
           <button disabled={loading} className='bg-red-800 text-white rounded-lg my-1 p-2 uppercase hover:opacity-90 disabled:opacity-70'>
             {
               loading?"loading":"sign in"
