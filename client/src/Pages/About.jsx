@@ -1,25 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 export default function About() {
   return (
-    <div className='px-4 py-12 max-w-2xl mx-auto'>
-      <h1 className='text-3xl font-bold  mb-4 text-slate-800'>About</h1>
+    <div className='py-20 px-4 max-w-6xl mx-auto'>
+      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Buy&Sell</h1>
+      <p className='mb-4 text-slate-700'>Buy&Sell is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.</p>
       <p className='mb-4 text-slate-700'>
-        This is a MERN (MongoDB, Express, React, Node.js) stack application with
-        authentication. It allows users to sign up, log in, and log out, and
-        provides access to protected routes only for authenticated users.
+      Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
       </p>
-      <p className='mb-4 text-slate-700'>
-        The front-end of the application is built with React and uses React
-        Router for client-side routing. The back-end is built with Node.js and
-        Express, and uses MongoDB as the database. Authentication is implemented
-        using JSON Web Tokens (JWT).
-      </p>
-      <p className='mb-4 text-slate-700'>
-        This application is intended as a starting point for building full-stack
-        web applications with authentication using the MERN stack. Feel free to
-        use it as a template for your own projects!
-      </p>
+      <p className='mb-4 text-slate-700'>Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.</p>
     </div>
-  );
+  )
 }
