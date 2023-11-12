@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import ListingCard from '../components/ListingCard'
 
 function Search() {
     const[slideBarData,setSlideBarData]=useState({
@@ -151,9 +152,26 @@ function Search() {
                 </form>
             
         </div>
-        <div className=''>
+        <div className=' flex-1'>
             <h1 className='text-3xl font-semibold border-b p-3 text-slate-700'>Results</h1>
+
+            <div className='p-8 flex flex-wrap gap-4' >
+                {listing.length === 0 &&(
+                    <p className='text-center semi-bold text-2xl w-full'>No listing found!!</p>
+                )}
+
+                {
+                    listing && listing.map((list)=>(
+                        <ListingCard 
+                        key={list._id}
+                        listing={list}
+                        />
+                    ))
+
+                }
+            </div>
         </div>
+
     </div>
   )
 }
