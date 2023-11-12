@@ -57,7 +57,7 @@ export default function Home() {
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
           Buy & Sell is the best place to find your next perfect place to
-          live.
+          live .
           <br />
           We have a wide range of properties for you to choose from.
         </div>
