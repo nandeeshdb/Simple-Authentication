@@ -16,7 +16,7 @@ function Search() {
     const navigate = useNavigate()
 
     const[listing,setListing] =useState([])
-    console.log(listing)
+    const[showMore,setShowMore] = useState(false)
 
 
     useEffect(()=>{
@@ -45,6 +45,12 @@ function Search() {
             const searchQuery = urlParams.toString() 
             const res = await fetch(`/api/listing/get?${searchQuery}`)
             const data = await res.json();
+            if(data.length>8){
+                setShowMore(true)
+            }
+            else{
+                setShowMore(false)
+            }
             setListing(data)
 
 
@@ -91,6 +97,23 @@ function Search() {
         urlParams.set('order', slideBarData.order)
         const searchQuery = urlParams.toString()
         navigate(`/search?${searchQuery}`)
+    }
+
+    const showMoreClick=async()=>{
+        setShowMore(false)
+        const numberOfListing = listing.length;
+        const startIndex = numberOfListing;
+        const urlParams = new URLSearchParams(location.search);
+        urlParams.set('startIndex',startIndex)
+        const searchQuery = urlParams.toString();
+
+        const res= await fetch(`api/listing/get?${searchQuery}`)
+        const data =await  res.json();
+        if(data.length < 9){
+            setShowMore(false)
+        }
+        setListing([...listing, ...data])
+
     }
 
   return (
@@ -155,7 +178,7 @@ function Search() {
         <div className=' flex-1'>
             <h1 className='text-3xl font-semibold border-b p-3 text-slate-700'>Results</h1>
 
-            <div className='p-8 flex flex-wrap gap-4' >
+            <div className='p-6 flex flex-wrap gap-4' >
                 {listing.length === 0 &&(
                     <p className='text-center semi-bold text-2xl w-full'>No listing found!!</p>
                 )}
@@ -169,6 +192,10 @@ function Search() {
                     ))
 
                 }
+
+                {showMore &&(
+                    <button onClick={showMoreClick} className='text-blue-600 hover:underline'>Show More</button>
+                )}
             </div>
         </div>
 
